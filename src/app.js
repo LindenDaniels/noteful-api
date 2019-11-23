@@ -9,14 +9,14 @@ const NotesRouter = require('./Notes/notes-router')
 const FoldersRouter = require('./Folders/folders-router')
 
 const app = express()
-
-app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
-  skip: () => NODE_ENV === 'test'
-}))
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
+app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
+  skip: () => NODE_ENV === 'test'
+}))
+
 app.use(cors())
 app.use(helmet())
 
